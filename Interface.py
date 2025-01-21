@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 
-model = joblib.load("C:/Users/Yazid/PycharmProjects/pythonProject1/Spalling/mlp_model.pkl")
+model = joblib.load("mlp_model.pkl")
 
 variable_info = {
     "W/B": {"min": 0.186, "max": 0.61, "label": "Water/Binder Ratio"},
@@ -21,7 +21,7 @@ variable_info = {
     "HR °C/min": {"min": 1, "max": 300, "label": "Heating Rate (°C/min)"},
 }
 
-st.title("Spalling Risk Prediction Interface")
+st.title("Spalling Risk Prediction Interface, By BOUNEFLA et al")
 
 user_inputs = {}
 for var, info in variable_info.items():
@@ -33,7 +33,6 @@ for var, info in variable_info.items():
     )
 
 def normalize(value, var_info):
-    """Normalise une valeur en utilisant Min-Max scaling."""
     return (value - var_info["min"]) / (var_info["max"] - var_info["min"])
 
 normalized_data = np.array([
